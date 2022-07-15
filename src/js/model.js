@@ -20,7 +20,6 @@ const timeout = function (s) {
 };
 
 const createRecipeObj = function (recipe) {
-
 	return {
 		cookingTime: recipe.cooking_time,
 		id: recipe.id,
@@ -32,14 +31,12 @@ const createRecipeObj = function (recipe) {
 		title: recipe.title,
 		...(recipe.key && { key: recipe.key }),
 	};
-}
+};
 
 export async function loadRecipe(id) {
 	try {
-		
 		let recipeJson = await AJAX(`${API_URL}${id}?key=${KEY}`);
 		let { recipe } = recipeJson.data;
-		
 
 		recipe = createRecipeObj(recipe);
 		recipe.bookmarked = (function () {
@@ -58,7 +55,6 @@ export const loadSearchResults = async function (query) {
 		state.search.query = query;
 
 		const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
-		
 
 		state.search.recipes = data.data.recipes.map((rec) => {
 			return {
@@ -80,7 +76,7 @@ export const getPaginationPages = function (page = state.search.page) {
 	state.search.page = page;
 	let start = (page - 1) * NUM_PER_PAGE;
 	let end = page * NUM_PER_PAGE;
-	
+
 	return state.search.recipes.slice(start, end);
 };
 
@@ -112,11 +108,14 @@ export const uploadForm = async function (data) {
 		const ingredients = entryData
 			.filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
 			.map((ing) => {
-				if (ing[1]
-					.trim()
-					.split(",")
-					.map((ent) => ent.trim()).length !== 3) throw new Error("Recipe ingredient(s) not correctly provided!");
-					const [quantity, unit, description] = ing[1]
+				if (
+					ing[1]
+						.trim()
+						.split(",")
+						.map((ent) => ent.trim()).length !== 3
+				)
+					throw new Error("Recipe ingredient(s) not correctly provided!");
+				const [quantity, unit, description] = ing[1]
 					.trim()
 					.split(",")
 					.map((ent) => ent.trim());
@@ -140,7 +139,6 @@ export const uploadForm = async function (data) {
 		});
 		recipe.ingredients = ingredients;
 
-		
 		const dataRes = await Promise.race([
 			fetch(`${API_URL}?key=${KEY}`, {
 				method: "POST",
@@ -158,10 +156,8 @@ export const uploadForm = async function (data) {
 		return recipeRes.data.recipe;
 	} catch (err) {
 		throw err;
-		
 	}
 };
-
 
 const saveBookmarks = function () {
 	localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
@@ -170,3 +166,6 @@ const clearBookmarks = function () {
 	localStorage.clear("bookmarks");
 };
 // clearBookmarks()
+
+console.log("cleaned up code");
+console.log("latest branch merged");
