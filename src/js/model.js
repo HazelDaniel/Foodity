@@ -170,5 +170,3 @@ const clearBookmarks = function () {
 	localStorage.clear("bookmarks");
 };
 // clearBookmarks()
-
-console.log("cleaned up code")
