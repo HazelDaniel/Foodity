@@ -1,4 +1,4 @@
-// import icons from "../../src/img/icons.svg";
+
 export default class View {
 	_parentEl;
 	_data;

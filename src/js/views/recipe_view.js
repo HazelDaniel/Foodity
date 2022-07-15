@@ -1,4 +1,4 @@
-// import icons from "../../src/img/icons.svg";
+
 import View from "../views/view.js";
 import { evalQuantity } from "../helpers.js";
 class RecipeView extends View {

@@ -1,4 +1,4 @@
-// import icons from "../../src/img/icons.svg";
+
 import previewView from "./preview_view.js";
 import View from "../views/view.js";
 class SearchResultView extends View {

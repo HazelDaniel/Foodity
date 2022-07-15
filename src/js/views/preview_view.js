@@ -1,4 +1,4 @@
-// import icons from "../../img/icons.svg";
+
 import View from "../views/view.js";
 class PreviewView extends View {
 	get _generateMarkup() {

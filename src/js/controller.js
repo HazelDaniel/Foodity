@@ -1,8 +1,7 @@
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
+
 import * as model from "../js/model.js";
 import recipeView from "./views/recipe_view.js";
-// import addRecipeView from "./views/add_recipe_view.js";
+
 import searchView from "./views/search_view.js";
 import searchResultView from "./views/search_results_view.js";
 import paginationView from "./views/pagination_view.js";
@@ -10,9 +9,7 @@ import bookmarkView from "./views/bookmark_view.js";
 import addRecipeView from "./views/add_recipe_view.js";
 
 
-// if (module.hot) {
-// 	module.hot.accept();
-// }
+
 
 const controlRecipes = async function () {
 	const id = window.location.hash.slice(1);
@@ -35,10 +32,7 @@ const controlRecipes = async function () {
 			// IGNORE THE ERROR . IT SEEMS PRETTY NORMAL FOR IT TO THROW AN ERROR WHEN TRYING TO CLEAR A NON-EXISTING DIV
 			// console.log(err.message)
 		}
-		// try {
-		// } catch (err) {
-		// 	bookmarkView.renderError();
-		// }
+
 	} catch (err) {
 		console.log(err);
 		recipeView.renderError();
@@ -70,8 +64,7 @@ const controlServings = function (newServings) {
 	recipeView.update(model.state.recipe);
 };
 const updateBookmarks = function () {
-	// bookmarkView.renderError();
-	// console.log(model.state.recipe.bookmarked);
+
 	if (!model.state.recipe.bookmarked) {
 		model.addBookmark(model.state.recipe);
 	} else {
@@ -79,8 +72,7 @@ const updateBookmarks = function () {
 	}
 	recipeView.update(model.state.recipe);
 	controlBookmarksRender();
-	// console.log(model.state.bookmarks);
-	// console.log(model.state.recipe.bookmarked);
+
 };
 const controlBookmarksRender = function () {
 	try {

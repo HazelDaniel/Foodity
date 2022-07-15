@@ -36,10 +36,10 @@ const createRecipeObj = function (recipe) {
 
 export async function loadRecipe(id) {
 	try {
-		// console.log(recipeRes);
+		
 		let recipeJson = await AJAX(`${API_URL}${id}?key=${KEY}`);
 		let { recipe } = recipeJson.data;
-		// console.log(recipe);
+		
 
 		recipe = createRecipeObj(recipe);
 		recipe.bookmarked = (function () {
@@ -58,7 +58,7 @@ export const loadSearchResults = async function (query) {
 		state.search.query = query;
 
 		const data = await AJAX(`${API_URL}?search=${query}&key=${KEY}`);
-		// console.log(data);
+		
 
 		state.search.recipes = data.data.recipes.map((rec) => {
 			return {
@@ -80,7 +80,7 @@ export const getPaginationPages = function (page = state.search.page) {
 	state.search.page = page;
 	let start = (page - 1) * NUM_PER_PAGE;
 	let end = page * NUM_PER_PAGE;
-	// console.log(state.search.recipes);
+	
 	return state.search.recipes.slice(start, end);
 };
 
@@ -140,7 +140,7 @@ export const uploadForm = async function (data) {
 		});
 		recipe.ingredients = ingredients;
 
-		// console.log(recipe);
+		
 		const dataRes = await Promise.race([
 			fetch(`${API_URL}?key=${KEY}`, {
 				method: "POST",
@@ -151,15 +151,14 @@ export const uploadForm = async function (data) {
 			}),
 			timeout(TIMEOUT_SEC),
 		]);
-		// console.log(`${API_URL}?key=${KEY}/`);
-		// const dataRes = await AJAX(`${API_URL}?key=${KEY}`, recipe);
+
 		let recipeRes = await dataRes.json();
 		recipeRes.data.recipe = createRecipeObj(recipeRes.data.recipe);
 		state.recipe = recipeRes.data.recipe;
 		return recipeRes.data.recipe;
 	} catch (err) {
 		throw err;
-		// console.log(err);
+		
 	}
 };
 

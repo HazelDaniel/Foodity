@@ -1,4 +1,4 @@
-// import icons from "../../img/icons.svg";
+
 import View from "../views/view.js";
 class PaginationView extends View {
 	_parentEl = document.querySelector(".pagination");
