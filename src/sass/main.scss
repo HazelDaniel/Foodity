@@ -1,0 +1,13 @@
+@import 'base';
+@import 'components';
+@import 'preview';
+@import 'searchResults';
+@import 'recipe';
+@import 'upload';
+@import 'header';
+*{
+	&::selection{
+		background-color: transparent;
+
+	}
+}
